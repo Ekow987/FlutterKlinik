@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ict_klinik/signup.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -18,30 +19,31 @@ class _LoginPageState extends State<LoginPage> {
       // ),
       // backgroundColor: Colors.grey,
       body: ListView(children: [
-            Container(
-              height: 350,
-              width: 300,
-              
-          decoration:const BoxDecoration(
-            color: Colors.amber,
-            // image: DecorationImage(image: AssetImage('assets/images/klinik.jpg', ),fit: BoxFit.contain),
-          ),
-        ), 
-           const SizedBox(
-              height: 30,
-            ),
-        Padding(
-          padding: const EdgeInsets.only(left: 30, right: 30),
-          child: const Text(
+        //     Container(
+        //       height: 350,
+        //       width: 300,
+
+        //   decoration:const BoxDecoration(
+        //     color: Colors.amber,
+        //     // image: DecorationImage(image: AssetImage('assets/images/klinik.jpg', ),fit: BoxFit.contain),
+        //   ),
+        // ),
+
+        const Image(image: AssetImage('assets/images/klinik.jpg')),
+        const SizedBox(
+          height: 30,
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 30, right: 30),
+          child: Text(
             'Proceeed with your',
             style: TextStyle(fontSize: 20),
           ),
         ),
 
-
-       const Padding(
-          padding:  EdgeInsets.only(left: 30, right: 30),
-          child:  Text(
+        const Padding(
+          padding: EdgeInsets.only(left: 30, right: 30),
+          child: Text(
             'Login',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
           ),
@@ -57,12 +59,12 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               const TextField(
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.person),
+                    prefixIcon: Icon(Icons.person),
                     // icon: Icon(Icons.person),
                     border: OutlineInputBorder(),
                     hintText: "Username"),
               ),
-             const  SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
@@ -70,24 +72,48 @@ class _LoginPageState extends State<LoginPage> {
                   obscureText: true,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock),
-                      border: OutlineInputBorder(),
-                      hintText: "Password",
-                      ),
+                    border: OutlineInputBorder(),
+                    hintText: "Password",
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 40,
               ),
+
+              // ElevatedButton(onPressed: (){}, child: const Text('Sign In'), style: ElevatedButton.styleFrom(
+              //   maximumSize:
+              // ),)
               SizedBox(
-                width: 130,
-                child: Container(
-                  height: 50,
-                  decoration:  const BoxDecoration(color: Colors.green,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                width: 200,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(40),
+                    // NEW
                   ),
-                  child: const Center(child: Text("Sign In",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20, color: Colors.white), )),
+                  onPressed: () {},
+                  child: const Text(
+                    'Sign In',
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 70),
+                child: Row(
+                  children: [
+                    const Text('New to ICT Klinik?'),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUp()));
+                        },
+                        child: const Text('Sign Up')),
+                  ],
+                ),
+              )
             ],
           ),
         ),
